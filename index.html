@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Стеллажи для ПВЗ Ozon — разбор направления</title>
+<meta name="description" content="Разбор рынка оснащения пунктов выдачи: расчёт изделия по двум нормативам, себестоимость, каналы сбыта и стратегия входа.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#E7EAE7; --surface:#FBFCFB; --surface-2:#F1F4F1;
+  --ink:#13171A; --muted:#5C6461; --line:#C9D0CB; --line-soft:#DEE3DF;
+  --accent:#A85400; --accent-soft:#F2E5D6;
+  --ok:#2E6B44; --bad:#9E2A1E; --warn:#8A6410;
+  --shadow:0 1px 2px rgba(19,23,26,.06), 0 8px 24px rgba(19,23,26,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#12161A; --surface:#1A1F23; --surface-2:#212830;
+    --ink:#E6EBE8; --muted:#96A09C; --line:#2C343A; --line-soft:#242B31;
+    --accent:#E5954A; --accent-soft:#33261A;
+    --ok:#63AC7E; --bad:#DE7264; --warn:#D0A445;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#12161A; --surface:#1A1F23; --surface-2:#212830;
+  --ink:#E6EBE8; --muted:#96A09C; --line:#2C343A; --line-soft:#242B31;
+  --accent:#E5954A; --accent-soft:#33261A;
+  --ok:#63AC7E; --bad:#DE7264; --warn:#D0A445;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font-family:"Golos Text","Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.62;
+  -webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.layout{max-width:1220px;margin:0 auto;padding:0 20px 100px;display:grid;
+  grid-template-columns:216px minmax(0,1fr);gap:44px;align-items:start}
+@media (max-width:940px){.layout{grid-template-columns:1fr;gap:0}}
+
+/* навигация */
+nav{position:sticky;top:24px;padding-top:44px;font-size:13.5px}
+@media (max-width:940px){nav{position:static;padding:20px 0 0;border-bottom:1px solid var(--line)}}
+nav .navtitle{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+nav ol{list-style:none;margin:0;padding:0;counter-reset:n}
+nav li{counter-increment:n;margin-bottom:2px}
+nav a{display:flex;gap:8px;padding:4px 0;color:var(--muted);text-decoration:none;line-height:1.35}
+nav a::before{content:counter(n,decimal-leading-zero);font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;color:var(--line);flex:none;padding-top:2px}
+nav a:hover,nav a:focus-visible{color:var(--accent)}
+nav a:hover::before{color:var(--accent)}
+
+main{min-width:0;padding-top:20px}
+
+/* штамп */
+.stamp{border-bottom:2px solid var(--ink);padding:24px 0 22px;margin-bottom:8px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-family:Oswald,sans-serif;font-weight:600;font-size:clamp(32px,5.6vw,58px);
+  line-height:1.03;letter-spacing:-.012em;margin:0 0 10px;text-wrap:balance}
+.stamp .sub{color:var(--muted);max-width:64ch;margin:0 0 22px;font-size:16.5px}
+.stamp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line)}
+.stamp-cell{background:var(--surface);padding:10px 13px}
+.stamp-cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 3px}
+.stamp-cell dd{margin:0;font-family:Oswald,sans-serif;font-size:20px;font-weight:500;
+  font-variant-numeric:tabular-nums}
+
+section{margin-top:58px;scroll-margin-top:20px}
+.head{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;margin-bottom:8px}
+h2{font-family:Oswald,sans-serif;font-weight:500;font-size:clamp(22px,3vw,31px);margin:0;
+  text-wrap:balance;letter-spacing:.004em}
+h3{font-family:Oswald,sans-serif;font-weight:500;font-size:19px;margin:30px 0 8px}
+p,ul,ol{max-width:73ch}
+p{margin:0 0 15px}
+ul,ol{margin:0 0 15px;padding-left:22px}
+li{margin-bottom:7px}
+strong{font-weight:600}
+
+.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.11em;
+  text-transform:uppercase;padding:3px 8px;border:1px solid var(--line);color:var(--muted);
+  white-space:nowrap;flex:none}
+.tag-fact{border-color:var(--ok);color:var(--ok)}
+.tag-calc{border-color:var(--accent);color:var(--accent)}
+.tag-risk{border-color:var(--bad);color:var(--bad)}
+.tag-open{border-color:var(--warn);color:var(--warn)}
+
+.lead{font-size:18.5px;line-height:1.58;border-left:3px solid var(--accent);
+  padding-left:19px;margin:20px 0;max-width:70ch}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:13px;margin:22px 0}
+.tile{background:var(--surface);border:1px solid var(--line-soft);padding:15px 16px;box-shadow:var(--shadow)}
+.tile .n{font-family:Oswald,sans-serif;font-size:30px;font-weight:600;line-height:1.04;
+  display:block;font-variant-numeric:tabular-nums}
+.tile .n.bad{color:var(--bad)} .tile .n.ok{color:var(--ok)}
+.tile .l{font-size:13px;color:var(--muted);display:block;margin-top:5px;line-height:1.4}
+
+.scroll{overflow-x:auto;margin:20px 0;border:1px solid var(--line-soft);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:520px}
+th,td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--line-soft);vertical-align:top}
+th{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;background:var(--surface-2);white-space:nowrap}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;
+  font-family:"IBM Plex Mono",monospace;font-size:13.5px;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tr.hi td{background:var(--accent-soft)}
+tr.hi td:first-child{font-weight:600}
+.pass{color:var(--ok);font-weight:500}
+.fail{color:var(--bad);font-weight:600}
+
+.checks{display:grid;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin:20px 0}
+.check{background:var(--surface);padding:10px 14px;display:grid;
+  grid-template-columns:1fr auto auto;gap:12px;align-items:baseline}
+@media (max-width:600px){.check{grid-template-columns:1fr auto}.check .val{grid-column:1/-1;text-align:left}}
+.check .what{font-size:14.5px}
+.check .val{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--muted);
+  font-variant-numeric:tabular-nums;text-align:right}
+.check .verdict{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;
+  text-transform:uppercase;white-space:nowrap}
+
+.note{background:var(--surface);border:1px solid var(--line-soft);border-left:3px solid var(--accent);
+  padding:16px 19px;margin:22px 0;max-width:74ch}
+.note.bad{border-left-color:var(--bad)}
+.note.ok{border-left-color:var(--ok)}
+.note h3{margin:0 0 8px;font-size:17px}
+.note p:last-child{margin-bottom:0}
+
+.steps{list-style:none;padding:0;counter-reset:s;max-width:74ch}
+.steps li{counter-increment:s;position:relative;padding-left:40px;margin-bottom:15px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;
+  font-family:Oswald,sans-serif;font-size:15px;font-weight:600;color:var(--accent);
+  width:26px;height:26px;border:1.5px solid var(--accent);display:grid;place-items:center}
+.steps b{display:block;font-family:Oswald,sans-serif;font-weight:500;font-size:17px;margin-bottom:2px}
+
+.hz{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:22px 0}
+.hz-card{background:var(--surface);border:1px solid var(--line-soft);padding:17px 18px;box-shadow:var(--shadow)}
+.hz-card .when{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.hz-card h4{font-family:Oswald,sans-serif;font-weight:500;font-size:18px;margin:0 0 8px}
+.hz-card p{font-size:14px;margin:0 0 9px;color:var(--muted)}
+.hz-card .money{font-family:Oswald,sans-serif;font-size:21px;font-weight:600;
+  font-variant-numeric:tabular-nums}
+
+footer{margin-top:70px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);
+  font-size:13.5px;max-width:74ch}
+code{font-family:"IBM Plex Mono",monospace;font-size:.9em;background:var(--surface-2);padding:1px 5px}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<nav aria-label="Разделы">
+  <div class="navtitle">Разделы</div>
+  <ol>
+    <li><a href="#kratko">Коротко</a></li>
+    <li><a href="#sdvig">Что произошло</a></li>
+    <li><a href="#rynok">Рынок в деньгах</a></li>
+    <li><a href="#izdelie">Изделие и нормативы</a></li>
+    <li><a href="#raschet">Расчёт конструкции</a></li>
+    <li><a href="#sebes">Себестоимость</a></li>
+    <li><a href="#pokupatel">Экономика покупателя</a></li>
+    <li><a href="#kanaly">Каналы сбыта</a></li>
+    <li><a href="#ogranicheniya">Что мешает</a></li>
+    <li><a href="#strategiya">Стратегия</a></li>
+    <li><a href="#alians">Кто что делает</a></li>
+    <li><a href="#plan">План на 30 дней</a></li>
+    <li><a href="#riski">Риски и незнание</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<header class="stamp">
+  <div class="eyebrow">Разбор направления · 2 сентября 2026</div>
+  <h1>Стеллажи для пунктов выдачи</h1>
+  <p class="sub">Ozon переносит хранение товаров в 80 тысяч ПВЗ и требует оснастить их
+  стеллажами. Разбор рынка, расчёт изделия по двум нормативам, экономика каналов и
+  стратегия входа.</p>
+  <dl class="stamp-grid">
+    <div class="stamp-cell"><dt>Старт программы</dt><dd>10.09.2026</dd></div>
+    <div class="stamp-cell"><dt>Пунктов в сети</dt><dd>85 000</dd></div>
+    <div class="stamp-cell"><dt>Рынок, базовый</dt><dd>0,93 млрд ₽</dd></div>
+    <div class="stamp-cell"><dt>Себестоимость P50</dt><dd>5 276 ₽</dd></div>
+    <div class="stamp-cell"><dt>Розница аналогов</dt><dd>7–11 тыс ₽</dd></div>
+  </dl>
+</header>
+
+<section id="kratko">
+  <div class="head"><h2>Коротко</h2><span class="tag tag-risk">Главное</span></div>
+  <p class="lead">Рынок настоящий и он не разовый. Но выиграть его производством нельзя:
+  своя оснастка и декларация — это два месяца, а поставка партии требует оборотного
+  капитала в сотни миллионов. Зайти надо каналом, а не заводом.</p>
+  <p>Три вещи, которые меняют разговор:</p>
+  <ul>
+    <li><strong>Покупатель не чувствителен к цене.</strong> Стеллаж окупается у владельца
+    ПВЗ за полтора месяца. Разница между 6 000 и 9 000 ₽ для него шум — значит
+    конкурировать ценой бессмысленно, а вся экономия остаётся у продавца.</li>
+    <li><strong>Это не акция Ozon, а отраслевой сдвиг.</strong> Wildberries запускает
+    партнёрские хабы в те же недели. Маркетплейсы переносят склад в розничную сеть, и
+    поводом названа физическая уязвимость крупных хабов. Назад это не откатится.</li>
+    <li><strong>Один договор с площадкой стоит больше, чем 80 000 продаж поодиночке.</strong>
+    По расчёту каналов статус рекомендованного поставщика даёт вдвое большую маржу, чем
+    самостоятельная розница, — при более низкой цене.</li>
+  </ul>
+</section>
+
+<section id="sdvig">
+  <div class="head"><h2>Что произошло</h2><span class="tag tag-fact">Проверено</span></div>
+  <p>28 августа Ozon объявил, что подключает <strong>более 80 тысяч пунктов выдачи</strong>
+  к хранению и продаже товаров продавцов прямо из ПВЗ. С 10 сентября в пунктах остаются
+  отказы и отмены, с середины октября продавцы везут туда поставки.</p>
+  <div class="tiles">
+    <div class="tile"><span class="n">15 ₽</span><span class="l">за обработку возврата</span></div>
+    <div class="tile"><span class="n">5 + 5 ₽</span><span class="l">перемещение на ячейку и подготовка к отправке</span></div>
+    <div class="tile"><span class="n">0,2 ₽</span><span class="l">за литр товара в день за размещение</span></div>
+    <div class="tile"><span class="n">~15 000 ₽</span><span class="l">оценка Ozon: доход пункта с одного стеллажа в месяц</span></div>
+  </div>
+  <div class="note">
+    <h3>Это происходит у обоих лидеров одновременно</h3>
+    <p>Wildberries в августе запустил партнёрские хабы: помещение от 100 м², минимум пять
+    камер, оплата за каждую принятую коробку и доплата за хранение свыше трёх дней. Плюс
+    схема FBW через ПВЗ. Фон у обоих один и назван прямо — атаки на логистические
+    центры: пострадало более двадцати объектов Wildberries и не менее шести объектов Ozon.</p>
+    <p>Вывод, который стоит держать в голове: <strong>децентрализация складов вызвана не
+    экономикой, а уязвимостью.</strong> Это не эксперимент на квартал, а новая
+    конфигурация отрасли — и новый устойчивый рынок оснащения малого формата.</p>
+  </div>
+  <p>Ozon за последний год открыл 26,5 тысяч новых пунктов и обошёл Wildberries по их
+  числу. Даже когда программа хранения насытится, <strong>каждый год появляется 26 тысяч
+  новых точек</strong>, и каждая — покупатель оборудования.</p>
+</section>
+
+<section id="rynok">
+  <div class="head"><h2>Рынок в деньгах</h2><span class="tag tag-calc">Расчёт</span></div>
+  <p>Считаем по комплекту (стеллаж, 24 коробки, крепление, маркировка ячеек) при цене
+  12 900 ₽ с НДС — это середина между розницей голого стеллажа 7–11 тыс. ₽ и полной
+  оснасткой.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Сценарий</th><th class="num">Доля точек</th><th class="num">Комплектов на точку</th><th class="num">Штук</th><th class="num">Рынок</th></tr></thead>
+    <tbody>
+      <tr><td>осторожный</td><td class="num">30 %</td><td class="num">1,0</td><td class="num">24 000</td><td class="num">0,31 млрд ₽</td></tr>
+      <tr class="hi"><td>базовый</td><td class="num">60 %</td><td class="num">1,5</td><td class="num">72 000</td><td class="num">0,93 млрд ₽</td></tr>
+      <tr><td>высокий</td><td class="num">80 %</td><td class="num">2,5</td><td class="num">160 000</td><td class="num">2,06 млрд ₽</td></tr>
+    </tbody>
+  </table></div>
+  <p>Почему больше одного комплекта на точку: Ozon прямо пишет, что стеллажей можно
+  поставить несколько, а доход растёт линейно с ёмкостью. Ограничение — площадь: при
+  минимальных 20 м² помещения и клиентской зоне от 12 м² под склад остаётся 8–18 м², то
+  есть физически помещается от трёх до восьми стеллажей.</p>
+</section>
+
+<section id="izdelie">
+  <div class="head"><h2>Изделие и нормативы</h2><span class="tag tag-fact">По первоисточнику</span></div>
+  <p>Требование Ozon: открытый стеллаж на 5 полок, высота 200 см, ширина 120 или 100 см,
+  глубина 40 см, <strong>120 кг на полку</strong>; коробки 40×28×34 см — 24 штуки на
+  стеллаж 120 см. Стеллаж стоит отдельно и должен быть виден камере облачного
+  видеонаблюдения.</p>
+  <p>На изделие действуют <strong>два документа сразу</strong>, оба прочитаны по
+  официальному тексту, а не по пересказу.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Документ</th><th>Что задаёт</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ГОСТ Р 55525-2017</strong><br><span style="color:var(--muted);font-size:13px">Стеллажи сборно-разборные</span></td>
+      <td>Запас прочности по пределу текучести не менее 1,25 · запас устойчивости 1,3 ·
+      прогиб не более L/200 · гибкость стоек и балок не более 120 · <strong>необходимость
+      крепления к полу определяет изготовитель, и отсутствие крепления допускается только
+      по его прямому указанию</strong> · табличка грузоподъёмности формата не менее А4</td></tr>
+      <tr><td><strong>ТР ТС 025/2012</strong><br><span style="color:var(--muted);font-size:13px">Безопасность мебельной продукции</span></td>
+      <td>Стеллажи прямо названы в Приложении 1 п. 2.5, в исключениях их нет — значит
+      <strong>декларирование обязательно</strong>. Таблица 7: прочность несущих элементов
+      из металла 150 даН/м², прогиб 6 мм на метр длины</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">
+    <h3>Требование заказчика жёстче регламента в 1,7 раза</h3>
+    <p>120 кг на полке 1,16 × 0,4 м — это 259 даН/м² против нормативных 150. Изделие,
+    честно прошедшее обязательное декларирование, требованию Ozon может не
+    соответствовать. И наоборот: без декларации продавать нельзя вовсе, а это до пяти
+    недель — здесь срок и есть настоящий дефицит.</p>
+  </div>
+</section>
+
+<section id="raschet">
+  <div class="head"><h2>Расчёт конструкции</h2><span class="tag tag-calc">Расчёт</span></div>
+  <p>Рекомендуется: <strong>лист 0,6 мм, борт 50 мм, двойной подгиб 15 мм, сталь 08пс</strong>,
+  стойки — уголок 40×40×1,5. Масса 32,5 кг, развёртка полки 530 × 1260 мм, расчётный
+  пролёт 1160 мм.</p>
+  <div class="checks">
+    <div class="check"><span class="what">Напряжение в полке</span><span class="val">121 из 156 МПа</span><span class="verdict pass">запас ×1,29</span></div>
+    <div class="check"><span class="what">Прогиб полки</span><span class="val">3,3 из 5,8 мм · L/353</span><span class="verdict pass">запас ×1,76</span></div>
+    <div class="check"><span class="what">Гибкость стойки</span><span class="val">62 из 120</span><span class="verdict pass">запас ×1,92</span></div>
+    <div class="check"><span class="what">Сжатие стойки</span><span class="val">1 765 из 9 060 Н</span><span class="verdict pass">запас ×5,13</span></div>
+    <div class="check"><span class="what">Срез болта М6 в узле полка—стойка</span><span class="val">294 из 4 824 Н</span><span class="verdict pass">запас ×16,4</span></div>
+    <div class="check"><span class="what">Смятие листа 1,5 мм под болтом</span><span class="val">294 из 4 248 Н</span><span class="verdict pass">запас ×14,4</span></div>
+    <div class="check"><span class="what">ТР ТС: прочность при 150 даН/м²</span><span class="val">70 из 156 МПа</span><span class="verdict pass">запас ×2,22</span></div>
+    <div class="check"><span class="what">Отношение высоты к глубине</span><span class="val">5,0 при пределе 4,0</span><span class="verdict fail">не проходит</span></div>
+  </div>
+
+  <h3>Решает не толщина листа, а геометрия борта</h3>
+  <p>Один и тот же лист 0,6 мм на пролёте 1160 мм держит от 29 до 154 кг — в зависимости
+  только от того, как загнут край полки.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Борт</th><th>Двойной подгиб</th><th class="num">Держит</th><th>Требование 120 кг</th></tr></thead>
+    <tbody>
+      <tr><td>30 мм</td><td>нет</td><td class="num">29 кг</td><td class="fail">не проходит</td></tr>
+      <tr><td>30 мм</td><td>15 мм</td><td class="num">64 кг</td><td class="fail">не проходит</td></tr>
+      <tr><td>40 мм</td><td>нет</td><td class="num">51 кг</td><td class="fail">не проходит</td></tr>
+      <tr><td>40 мм</td><td>15 мм</td><td class="num">114 кг</td><td class="fail">не проходит</td></tr>
+      <tr><td>50 мм</td><td>нет</td><td class="num">76 кг</td><td class="fail">не проходит</td></tr>
+      <tr class="hi"><td>50 мм</td><td>10 мм</td><td class="num">128 кг</td><td class="pass">проходит</td></tr>
+      <tr class="hi"><td>50 мм</td><td>15 мм</td><td class="num">154 кг</td><td class="pass">проходит</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Отсюда практический вывод: предложения разных заводов несравнимы в принципе.</strong>
+  Везде написано «полка 0,6 мм», а несущая способность отличается впятеро. Спрашивать
+  надо геометрию борта, а не только цену.</p>
+
+  <div class="note bad">
+    <h3>Стеллаж обязан крепиться к стене</h3>
+    <p>2000 на 400 — это 5:1. Кронштейн с анкером должен входить в комплект, а в паспорте
+    нужно прямое указание изготовителя. Это не формальность: по ГОСТ отсутствие крепления
+    допускается только по прямому указанию изготовителя, и при травме отвечает поставщик.</p>
+  </div>
+
+  <div class="note">
+    <h3>Что спрашивать у поставщика, кроме цены</h3>
+    <p>У одного из рыночных аналогов в карточке стоит «нагрузка на полку 120 кг» и
+    одновременно «нагрузка на стеллаж 450 кг» при пяти полках. Пять по сто двадцать —
+    шестьсот, а не четыреста пятьдесят: <strong>все полки одновременно загрузить нельзя</strong>,
+    и владелец ПВЗ об этом не догадается. Вопрос «какая нагрузка на секцию» стоит
+    задавать всегда — вместе с вопросом про геометрию борта и про то, идёт ли в комплекте
+    крепление к стене.</p>
+  </div>
+
+  <h3>Перфорация и упаковка</h3>
+  <p>Стойки перфорируют, чтобы полку можно было переставлять. Отверстия срезают сечение:
+  при 6 мм остаётся 92 % площади, при 14 мм — 82 %. Запас у стойки пятикратный, так что
+  проходит, но считать по целому сечению нельзя.</p>
+  <p>Упаковка важнее, чем кажется: при цельной стойке пачка выходит
+  <strong>2000 × 530 × 101 мм</strong> — это длинномер, у большинства перевозчиков
+  отдельный дорогой тариф. Разъёмная стойка из двух частей даёт
+  <strong>1260 × 530 × 141 мм</strong> и укладывается в обычный. При доле логистики в
+  22 % себестоимости это не мелочь: <em>конструкцию надо проектировать под тариф
+  доставки, а не только под прочность.</em></p>
+</section>
+
+<section id="sebes">
+  <div class="head"><h2>Себестоимость</h2><span class="tag tag-calc">Расчёт</span></div>
+  <p>Металл — прайс Металлоторга (филиал Самара, обновлён 02.09.2026 в 8:12). Что прайс
+  показан с НДС, проверено переключателем на сайте: 73 100 / 1,22 даёт ровно 59 918 —
+  столько и показывает режим «без НДС».</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Сценарий</th><th class="num">На складе завода</th><th class="num">Доставка</th><th class="num">У покупателя</th></tr></thead>
+    <tbody>
+      <tr><td>дёшево</td><td class="num">2 953 ₽</td><td class="num">700 ₽</td><td class="num">3 653 ₽</td></tr>
+      <tr class="hi"><td>база</td><td class="num">3 965 ₽</td><td class="num">1 100 ₽</td><td class="num">5 065 ₽</td></tr>
+      <tr><td>дорого</td><td class="num">5 772 ₽</td><td class="num">1 800 ₽</td><td class="num">7 572 ₽</td></tr>
+    </tbody>
+  </table></div>
+  <p>Распределение по 4 000 розыгрышей, где связанные цены двигаются вместе:
+  <strong>P10 4 954 ₽ · P50 5 276 ₽ · P90 5 651 ₽</strong>, размах 13 % медианы.
+  Структура: металл 37 %, покрытие 23 %, <strong>логистика 22 %</strong>, передел 10 %,
+  остальное — крепёж, упаковка, кронштейн, паспорт, оснастка.</p>
+
+  <h3>Две статьи, которые теряются незаметно</h3>
+  <div class="tiles">
+    <div class="tile"><span class="n bad">57 %</span><span class="l">отход, если резать полку из стандартного листа 1250×2500</span></div>
+    <div class="tile"><span class="n ok">5 %</span><span class="l">отход из штрипса шириной 536 мм под развёртку</span></div>
+    <div class="tile"><span class="n bad">183 млн ₽</span><span class="l">цена одной строки в заявке металлобазе на партии 80 000</span></div>
+  </div>
+  <p>Про покрытие: порог равновесия между оцинковкой и окраской — 102 ₽/м² при базовой
+  цене окраски 100 ₽/м². Разница между вариантами меньше точности входов, то есть решает
+  прайс конкретного завода, а не общее правило. Отдельно: оцинкованного листа 0,6 мм в
+  сортаменте нет — есть 0,55 и 0,7.</p>
+</section>
+
+<section id="pokupatel">
+  <div class="head"><h2>Экономика покупателя</h2><span class="tag tag-calc">Расчёт</span></div>
+  <p>Стеллаж на 1200 мм — это 24 коробки, 914 литров ёмкости. Потолок дохода по
+  размещению — <strong>5 484 ₽ в месяц</strong> при полном заполнении, и он не зависит от
+  потока. Остальное приносят операции.</p>
+  <div class="scroll"><table>
+    <thead><tr><th class="num">Отказов в месяц</th><th class="num">Заполнение</th><th class="num">Доход в месяц</th><th class="num">Окупаемость</th></tr></thead>
+    <tbody>
+      <tr><td class="num">100</td><td class="num">50 %</td><td class="num">5 242 ₽</td><td class="num">1,6 мес</td></tr>
+      <tr><td class="num">250</td><td class="num">50 %</td><td class="num">8 992 ₽</td><td class="num">0,9 мес</td></tr>
+      <tr class="hi"><td class="num">500</td><td class="num">100 %</td><td class="num">17 984 ₽</td><td class="num">0,5 мес</td></tr>
+    </tbody>
+  </table></div>
+  <p>Вложения посчитаны как стеллаж 6 500 ₽ плюс 24 коробки по 70 ₽. Оценка Ozon «около
+  15 000 ₽» воспроизводится при 500 отказах в месяц — это 17 в день на пункт, витринная
+  цифра для загруженной точки. Но даже вчетверо меньший поток окупает стеллаж быстрее
+  чем за два месяца.</p>
+  <div class="note ok">
+    <h3>Продавать надо литры дохода, а не металл</h3>
+    <p>Доход владельца ПВЗ по размещению пропорционален ёмкости: каждый дополнительный
+    ярус — это ещё четыре коробки, 152 литра и <strong>около 900 ₽ в месяц</strong>. Ярус
+    в себестоимости стоит примерно 350 ₽ и окупается у покупателя за две недели.</p>
+    <p>Значит правильный разговор с ПВЗ — не «у нас дешевле», а «вот сколько вы заработаете
+    на этой конфигурации». И тогда шестиярусный комплект продаётся легче и дороже
+    пятиярусного, хотя стоит производителю чуть больше.</p>
+  </div>
+</section>
+
+<section id="kanaly">
+  <div class="head"><h2>Каналы сбыта</h2><span class="tag tag-calc">Расчёт</span></div>
+  <p>Себестоимость комплекта на складе завода — 4 951 ₽ (стеллаж 3 965 + 24 коробки 936 +
+  маркировка ячеек 50). Базовый сценарий рынка — 72 000 комплектов.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Канал</th><th class="num">Цена с НДС</th><th class="num">Маржа с шт</th><th class="num">Маржин.</th><th class="num">Достижимо</th><th class="num">Маржа всего</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td>Рекомендованный поставщик Ozon<br><span style="color:var(--muted);font-size:12.5px">один договор вместо 80 000, логистика площадки</span></td>
+        <td class="num">9 900</td><td class="num">3 164</td><td class="num">39 %</td><td class="num">57 600</td><td class="num">182 млн</td></tr>
+      <tr><td>Витрина на самом Ozon (FBS)<br><span style="color:var(--muted);font-size:12.5px">покупатель уже там, доставка идёт в его же пункт</span></td>
+        <td class="num">12 900</td><td class="num">2 725</td><td class="num">26 %</td><td class="num">36 000</td><td class="num">98 млн</td></tr>
+      <tr><td>Прямые продажи: сообщества, таргет, свой сайт<br><span style="color:var(--muted);font-size:12.5px">нужна своя машина охвата</span></td>
+        <td class="num">12 900</td><td class="num">3 458</td><td class="num">33 %</td><td class="num">18 000</td><td class="num">62 млн</td></tr>
+      <tr><td>Опт сетям и управляющим компаниям<br><span style="color:var(--muted);font-size:12.5px">самовывоз, быстрые деньги, низкая маржа</span></td>
+        <td class="num">7 500</td><td class="num">1 197</td><td class="num">19 %</td><td class="num">10 800</td><td class="num">13 млн</td></tr>
+    </tbody>
+  </table></div>
+  <p>Каналы не конкурируют, а выстраиваются в очередь: <strong>сначала розница — она
+  доказывает спрос и кормит, затем с этой историей идти к площадке.</strong> Приходить в
+  Ozon с идеей и приходить с тысячей проданных комплектов — два разных разговора.</p>
+
+  <div class="note">
+    <h3>Где на самом деле находятся 80 000 покупателей</h3>
+    <p>Не в справочниках, а в собственных сообществах. Проверено: в Telegram-чате
+    «Озон — агентские ПВЗ» <strong>17 850 участников, 2 247 онлайн</strong> — это пятая
+    часть всей сети в одном месте. Дотянуться до неё стоит несопоставимо дешевле, чем
+    собирать 80 000 контактов по адресам.</p>
+    <p>Юридическая рамка, которую нельзя нарушать: массовая шаблонная рассылка — реклама
+    без согласия, статья 14.3 КоАП, штрафы до миллиона, и с 2025 года доказывать наличие
+    согласия обязан сам бизнес. А вот <strong>персональное деловое предложение от одного
+    юрлица другому рекламой не считается</strong> — это подтверждённая практика ФАС.
+    Разница ровно в персонализации, и это как раз то, что машина умеет делать в масштабе,
+    а человек — нет.</p>
+  </div>
+</section>
+
+<section id="ogranicheniya">
+  <div class="head"><h2>Что мешает: деньги и время</h2><span class="tag tag-risk">Ограничения</span></div>
+  <p>Два ограничения делают невозможным очевидный сценарий «запустим своё производство и
+  закроем 80 000 штук».</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Канал</th><th class="num">Штук в месяц</th><th class="num">Цикл денег</th><th class="num">Нужно в обороте</th></tr></thead>
+    <tbody>
+      <tr class="hi"><td>Розница: покупатель платит вперёд</td><td class="num">6 000</td><td class="num">20 дней</td><td class="num">7 млн ₽</td></tr>
+      <tr><td>Прямые продажи с предоплатой</td><td class="num">3 000</td><td class="num">25 дней</td><td class="num">4 млн ₽</td></tr>
+      <tr><td>Опт с отсрочкой 30 дней</td><td class="num">4 000</td><td class="num">60 дней</td><td class="num">40 млн ₽</td></tr>
+      <tr><td>Поставка партии с отсрочкой 45 дней</td><td class="num">12 000</td><td class="num">75 дней</td><td class="num">149 млн ₽</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Розница финансирует себя сама, поставка партии — нет.</strong> При 12 000
+  штук в месяц в товаре стоит 149 млн ₽, и это деньги, которых у альянса из двух человек
+  просто нет.</p>
+  <p>Второе ограничение — время. Оснастка под новый типоразмер: 1,5–6 млн ₽ и 4–8 недель.
+  Декларация ТР ТС: 25–86 тыс. ₽ и до 5 недель. <strong>При старте сегодня первая
+  собственная серия выходит не раньше конца октября</strong> — то есть к первому этапу
+  программы мы не успеваем ни при каком раскладе.</p>
+  <div class="note ok">
+    <h3>Отсюда главный ход</h3>
+    <p>Не надо ничего запускать с нуля. На рынке уже есть заводы, которые делают
+    подходящий стеллаж и <em>уже имеют декларацию</em>: серии на 120 кг с порошковым
+    покрытием RAL 7035 продаются по 7–11 тыс. ₽. Первые месяцы — <strong>перепродажа
+    готового изделия с нашей упаковкой ценности</strong>: комплект, расчёт, инструкция
+    размещения под камеру, крепление к стене. Ноль вложений в оснастку, ноль ожидания
+    декларации, деньги через две-три недели.</p>
+    <p>Своя конструкция — второй горизонт, когда понятен реальный спрос. Тогда расчёт даёт
+    минус 20–30 % себестоимости, и это уже маржа, а не гонка.</p>
+  </div>
+</section>
+
+<section id="strategiya">
+  <div class="head"><h2>Стратегия: три горизонта</h2><span class="tag tag-calc">Предложение</span></div>
+  <div class="hz">
+    <div class="hz-card">
+      <div class="when">Сентябрь — октябрь</div>
+      <h4>Канал без вложений</h4>
+      <p>Перепродажа готового сертифицированного изделия. Комплект вместо голого стеллажа.
+      Витрина на самом Ozon плюс работа в сообществах владельцев ПВЗ. Предоплата, поэтому
+      оборотка почти не нужна.</p>
+      <div class="money">до 60 млн ₽ маржи</div>
+    </div>
+    <div class="hz-card">
+      <div class="when">Ноябрь — январь</div>
+      <h4>Своя конструкция</h4>
+      <p>Расчётное ТЗ на контрактное производство, своя декларация, штрипс под развёртку,
+      разъёмная стойка под тариф доставки. Себестоимость падает на 20–30 %, изделие
+      становится своим, а не чужим.</p>
+      <div class="money">+2 000 ₽ маржи с шт</div>
+    </div>
+    <div class="hz-card">
+      <div class="when">С декабря</div>
+      <h4>Договор с площадкой</h4>
+      <p>Выход на Ozon как рекомендованный поставщик — с доказанным спросом, своим
+      изделием и мощностями партнёра. Один договор вместо восьмидесяти тысяч продаж.
+      Дальше — Wildberries и поток новых точек.</p>
+      <div class="money">до 182 млн ₽ маржи</div>
+    </div>
+  </div>
+  <p>Логика последовательности простая: каждый горизонт финансирует и обосновывает
+  следующий. Розница даёт деньги и доказательство спроса; доказательство спроса открывает
+  дверь к площадке; договор с площадкой снимает расходы на привлечение и доставку — самые
+  дорогие статьи розницы.</p>
+</section>
+
+<section id="alians">
+  <div class="head"><h2>Кто что делает</h2><span class="tag tag-open">К обсуждению</span></div>
+  <p>Компетенции складываются почти без пересечения — это и делает альянс осмысленным.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Партнёр с производством</th><th>Наша сторона</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Доступ к заводам и отношения с ними · переговоры о цене и объёме · контроль
+        качества и приёмка · отгрузка и склад · декларация через изготовителя</td>
+        <td>Расчёт и конструкция: единое ТЗ, по которому предложения становятся сравнимыми
+        · проверка того, что предлагают, по обоим нормативам · машина охвата: база точек,
+        работа в сообществах, персональные предложения, витрина и посадочная страница ·
+        аналитика спроса и цен · подготовка переговоров с площадкой</td>
+      </tr>
+    </tbody>
+  </table></div>
+  <h3>Три модели дележа</h3>
+  <ul>
+    <li><strong>Пополам в марже.</strong> Простая и честная, когда вклад сопоставим и оба
+    несут риск. Требует общего котла и прозрачного учёта.</li>
+    <li><strong>Роялти с проданной единицы за конструкцию плюс процент с приведённых
+    продаж.</strong> Разделяет два разных вклада и не требует общего юрлица. Удобна на
+    старте, когда объём неизвестен.</li>
+    <li><strong>Доля от подтверждённого снижения себестоимости.</strong> Платится только с
+    того, что удалось реально сэкономить против исходного предложения заводов. Самая
+    безопасная для партнёра и самая доказуемая для нас.</li>
+  </ul>
+  <p>Выбор зависит от одного: <strong>кто вкладывает оборотный капитал.</strong> Тот, кто
+  финансирует товар, несёт главный риск, и доля должна это отражать. При рознице с
+  предоплатой оборотка почти не нужна — и тогда вклад в продажи весит наравне с
+  производством.</p>
+</section>
+
+<section id="plan">
+  <div class="head"><h2>План на 30 дней</h2><span class="tag tag-calc">Действия</span></div>
+  <ol class="steps">
+    <li><b>Неделя 1. Проверить изделие, которое уже есть</b>
+    Запросить у двух-трёх заводов геометрию борта, нагрузку на секцию, наличие декларации
+    и комплект крепления. Прогнать их изделия через расчёт. Это два дня работы и оно
+    сразу показывает, кто из них реально проходит 120 кг.</li>
+    <li><b>Неделя 1. Посчитать закупочную цену и зафиксировать её</b>
+    Партия 200–500 штук под первую волну. Договориться об отсрочке или консигнации: это
+    и есть весь стартовый капитал.</li>
+    <li><b>Неделя 2. Собрать комплект и посадочную страницу</b>
+    Стеллаж, 24 коробки, крепление к стене, наклейки маркировки ячеек, инструкция
+    размещения под камеру. Продавать надо расчёт дохода владельца ПВЗ, а не металл.</li>
+    <li><b>Неделя 2. Открыть витрину на Ozon</b>
+    Покупатель уже там, доставка идёт в его же пункт. Карточка должна отвечать на три
+    вопроса, которых нет у конкурентов: сколько держит секция, что с креплением к стене,
+    сколько владелец заработает.</li>
+    <li><b>Неделя 3. Войти в сообщества</b>
+    Не рассылкой, а присутствием и пользой: разбор требований, калькулятор дохода,
+    ответы. Реклама — через админов чатов, легально и с маркировкой.</li>
+    <li><b>Неделя 3–4. Первые продажи и замер</b>
+    Цель — не объём, а данные: конверсия, средний чек, сколько комплектов берёт одна
+    точка, какие вопросы задают. Без этого разговор с площадкой будет пустым.</li>
+    <li><b>Неделя 4. Заявка в Ozon как поставщик</b>
+    С готовым изделием, декларацией, расчётом и первой сотней продаж. Параллельно —
+    запуск своей конструкции на контрактном производстве.</li>
+  </ol>
+</section>
+
+<section id="riski">
+  <div class="head"><h2>Риски и чего мы не знаем</h2><span class="tag tag-open">Не проверено</span></div>
+  <h3>Риски</h3>
+  <ul>
+    <li><strong>Ozon закупит централизованно</strong> и раздаст партнёрам сам. Тогда
+    розничного рынка не возникнет вовсе. Вероятность реальная, и это довод не строить
+    производство, а зайти каналом.</li>
+    <li><strong>Рынок уже занят.</strong> Готовые «стеллажи для ПВЗ Озон» продаются
+    сегодня минимум у пяти поставщиков, включая витрину на самом Ozon. Окна «никто не
+    догадался» нет — есть окно по срокам, и оно закрывается за месяцы.</li>
+    <li><strong>Требование 120 кг может смягчиться</strong> или не проверяться. Тогда
+    рынок заполнит дешёвый стеллаж на 30 кг, и вся инженерная аргументация потеряет вес.</li>
+    <li><strong>Штраф за неверный охват.</strong> Массовая рассылка без согласия — до
+    миллиона рублей. Работать можно только персональными предложениями и рекламой с
+    маркировкой.</li>
+  </ul>
+  <h3>Чего мы не проверили</h3>
+  <ul>
+    <li><strong>Точность расчёта на этом классе изделий не измерена.</strong> Сверка шла с
+    розничными ценами аналогов, а не с фактическим прайсом производства.</li>
+    <li><strong>Тариф доставки</strong> взят из отраслевого обзора (около 1 000 ₽ за
+    сборный груз), а не рассчитан на конкретном плече.</li>
+    <li><strong>Комиссия Ozon по этой категории</strong> взята оценкой 17 %: точные тарифы
+    живут в кабинете селлера и меняются.</li>
+    <li><strong>Трудоёмкость, накладные, скидка комбината, оснастка, крепёж, упаковка</strong>
+    — оценки без источника, помечены в снимке цен как таковые.</li>
+    <li><strong>Кто платит за стеллаж</strong> — вывод из формулировки инструкции Ozon, а
+    не документ.</li>
+    <li><strong>Мощности заводов</strong> проверены только у одного из семи.</li>
+  </ul>
+</section>
+
+<footer>
+  <p>Разбор подготовлен 2 сентября 2026 года. Расчёт изделия воспроизводится из исходного
+  кода: физика и деталировка — <code>calc/stellazh.py</code>, себестоимость —
+  <code>calc/stellazh_cost.py</code>, рынок и каналы — <code>calc/pvz_market.py</code>.
+  Все цены живут в датированном снимке, у каждой строки источник и диапазон; двенадцать
+  автоматических проверок стерегут выводы этого документа.</p>
+  <p>Нормативы прочитаны по официальным текстам: ГОСТ Р 55525-2017 и решение Совета ЕЭК
+  от 15.06.2012 № 32 (ТР ТС 025/2012). Рыночные цены сняты 2 сентября 2026 года.</p>
+</footer>
+
+</main>
+</div>
+</body>
+</html>

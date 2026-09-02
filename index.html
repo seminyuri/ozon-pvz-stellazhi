@@ -15,10 +15,18 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="preload" href="fonts/golos-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/oswald-600.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* Шрифты нарезаны под эту страницу и лежат рядом с ней: кириллица, латиница,
+   знак рубля и математика. У Google знак ₽ живёт в наборе latin-ext, и один
+   этот символ тянул за собой лишний файл на КАЖДОЕ начертание — 126 КБ.
+   Лицензия шрифтов — fonts/OFL.txt. */
+@font-face{font-family:"Oswald";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/oswald-500.woff2") format("woff2")}
+@font-face{font-family:"Oswald";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/oswald-600.woff2") format("woff2")}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/golos-400.woff2") format("woff2")}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/golos-600.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/plexmono-400.woff2") format("woff2")}
 :root{
   --ground:#E7EAE7; --surface:#FBFCFB; --surface-2:#F1F4F1;
   --ink:#13171A; --muted:#5C6461; --line:#C9D0CB; --line-soft:#DEE3DF;
@@ -133,13 +141,15 @@ strong{font-weight:600}
 table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:520px}
 th,td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--line-soft);vertical-align:top}
 th{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;
-  color:var(--muted);font-weight:500;background:var(--surface-2);white-space:nowrap}
+  color:var(--muted);background:var(--surface-2);white-space:nowrap}
 td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;
   font-family:"IBM Plex Mono",monospace;font-size:13.5px;white-space:nowrap}
 tbody tr:last-child td{border-bottom:none}
 tr.hi td{background:var(--accent-soft)}
 tr.hi td:first-child{font-weight:600}
-.pass{color:var(--ok);font-weight:500}
+.pass{color:var(--ok);font-weight:600}
+/* у Oswald нет глифа U+2192: стрелку берём из моноширинного, иначе её подставит система */
+a.ext::after{content:" \2192";font-family:"IBM Plex Mono",monospace;font-weight:400}
 .fail{color:var(--bad);font-weight:600}
 
 .checks{display:grid;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin:20px 0}
@@ -660,7 +670,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.9em;background:var(--surfa
   инструмент, который приводит покупателей дешевле любой рекламы.</p>
 
   <div class="note">
-    <h3><a href="https://seminyuri.github.io/sklad-v-pvz/" target="_blank" rel="noopener">Калькулятор дохода и проверка стеллажа →</a></h3>
+    <h3><a class="ext" href="https://seminyuri.github.io/sklad-v-pvz/" target="_blank" rel="noopener">Калькулятор дохода и проверка стеллажа</a></h3></h3>
     <p>Владелец пункта за полминуты видит, сколько заработает на программе хранения, и
     тут же проверяет, выдержит ли его нынешний стеллаж 120 кг. Обе части считаются по
     тем же формулам, что и наш движок: физика полки перенесена один в один, и в коде

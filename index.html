@@ -51,7 +51,21 @@ a{color:var(--accent)}
 nav{position:sticky;top:24px;padding-top:44px;font-size:13.5px}
 @media (max-width:940px){nav{position:static;padding:20px 0 0;border-bottom:1px solid var(--line)}}
 nav .navtitle{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.11em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  text-transform:uppercase;color:var(--muted);margin-bottom:10px;cursor:pointer;
+  list-style:none;display:flex;align-items:center;gap:8px;min-height:44px}
+nav .navtitle::-webkit-details-marker{display:none}
+nav .navtitle::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+nav details[open] .navtitle::after{transform:translateY(1px) rotate(-135deg)}
+/* На телефоне ссылки должны быть пальцем нажимаемы, на десктопе — плотным списком */
+@media (max-width:940px){
+  nav a{min-height:44px;align-items:center}
+  nav li{margin-bottom:0}
+}
+@media (min-width:941px){
+  nav .navtitle{min-height:0;pointer-events:none}
+  nav .navtitle::after{display:none}
+}
 nav ol{list-style:none;margin:0;padding:0;counter-reset:n}
 nav li{counter-increment:n;margin-bottom:2px}
 nav a{display:flex;gap:8px;padding:4px 0;color:var(--muted);text-decoration:none;line-height:1.35}
@@ -161,7 +175,8 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.9em;background:var(--surfa
 <div class="layout">
 
 <nav aria-label="Разделы">
-  <div class="navtitle">Разделы</div>
+  <details class="navbox" open>
+  <summary class="navtitle">Разделы</summary>
   <ol>
     <li><a href="#vstrecha">К встрече</a></li>
     <li><a href="#kratko">Коротко</a></li>
@@ -181,6 +196,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.9em;background:var(--surfa
     <li><a href="#plan">План на 30 дней</a></li>
     <li><a href="#riski">Риски и незнание</a></li>
   </ol>
+  </details>
 </nav>
 
 <main>
@@ -852,5 +868,20 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.9em;background:var(--surfa
 
 </main>
 </div>
+
+<script>
+/* Навигация свёрнута только на телефоне: пятнадцать пунктов занимали там
+   полэкрана до заголовка. По умолчанию список открыт, поэтому без скрипта
+   ничего не пропадает. */
+(function(){
+  var box = document.querySelector('nav details');
+  if (!box) return;
+  var narrow = window.matchMedia('(max-width: 940px)');
+  function apply(){ box.open = !narrow.matches; }
+  apply();
+  if (narrow.addEventListener) narrow.addEventListener('change', apply);
+  else if (narrow.addListener) narrow.addListener(apply);
+})();
+</script>
 </body>
 </html>
